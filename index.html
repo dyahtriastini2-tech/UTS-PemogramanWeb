@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - BukuKita</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="container" style="max-width:440px;margin-top:5rem">
+<div class="card">
+<h1 style="text-align:center;color:#4f46e5">📚 BukuKita</h1>
+<p style="text-align:center;font-size:.9rem;color:#64748b">email: mahasiswa@uts.com / pass: 123456</p>
+<div id="alertBox" style="background:#fee2e2;color:#991b1b;padding:.8rem;border-radius:8px;display:none;margin:1rem 0"></div>
+<form id="loginForm">
+<label>Email</label><input type="email" id="email" required>
+<label>Password</label><input type="password" id="password" required style="margin-bottom:1rem">
+<button type="submit" class="btn" style="width:100%">Login</button>
+</form>
+</div>
+</main>
+<script src="js/data.js"></script>
+<script>
+document.getElementById('loginForm').addEventListener('submit',function(e){
+ e.preventDefault();
+ const em=document.getElementById('email').value.trim();
+ const pw=document.getElementById('password').value.trim();
+ if(em===userDummy.email && pw===userDummy.password){
+  localStorage.setItem('isLogin','true');
+  window.location.href='dashboard.html';
+ } else {
+  const a=document.getElementById('alertBox');
+  a.textContent='email/password yang anda masukkan salah';
+  a.style.display='block';
+  alert('email/password yang anda masukkan salah');
+ }
+});
+</script>
+</body>
+</html>
